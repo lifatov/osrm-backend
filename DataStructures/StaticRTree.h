@@ -80,7 +80,7 @@ class StaticRTree
 
         inline void InitializeMBRectangle(const std::array<EdgeDataT, LEAF_NODE_SIZE> &objects,
                                           const uint32_t element_count,
-                                          const std::vector<NodeInfo> &coordinate_list)
+                                          const std::vector<QueryNode> &coordinate_list)
         {
             for (uint32_t i = 0; i < element_count; ++i)
             {
@@ -342,7 +342,7 @@ class StaticRTree
     explicit StaticRTree(std::vector<EdgeDataT> &input_data_vector,
                          const std::string tree_node_filename,
                          const std::string leaf_node_filename,
-                         const std::vector<NodeInfo> &coordinate_list)
+                         const std::vector<QueryNode> &coordinate_list)
         : m_element_count(input_data_vector.size()), m_leaf_node_filename(leaf_node_filename)
     {
         SimpleLogger().Write() << "constructing r-tree of " << m_element_count
