@@ -114,7 +114,12 @@ void RequestHandler::handle_request(const http::Request &req, http::Reply &reply
 
         // set headers
         reply.headers.emplace_back("Content-Length", cast::integral_to_string(reply.content.size()));
-        if ("gpx" == route_parameters.output_format)
+        if ("plain" == route_parameters.output_format)
+        { // plain json file
+            reply.headers.emplace_back("Content-Type", "application/json; charset=UTF-8");
+            reply.headers.emplace_back("Content-Disposition", "inline; filename=\"route.json\"");
+        }
+        else if ("gpx" == route_parameters.output_format)
         { // gpx file
             reply.headers.emplace_back("Content-Type", "application/gpx+xml; charset=UTF-8");
             reply.headers.emplace_back("Content-Disposition", "attachment; filename=\"route.gpx\"");
