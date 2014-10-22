@@ -12,9 +12,9 @@ private:
 
     void AddRoutePoint(const FixedPointCoordinate &coordinate, std::vector<char> &output)
     {
-        const std::string route_point_head = "[";
-        const std::string route_point_middle = ", ";
-        const std::string route_point_tail = "]";
+        const std::string route_point_head = "{ \"lat\":";
+        const std::string route_point_middle = ",\"lng\":";
+        const std::string route_point_tail = "},";
 
         std::string tmp;
 
@@ -58,7 +58,7 @@ public:
             AddRoutePoint(raw_route.segment_end_coordinates.back().target_phantom.location,
                     reply.content);
         }
-        std::string footer("]}");
+        std::string footer("{\"lat\":0,\"lng\":0} ]}");
         reply.content.insert(reply.content.end(), footer.begin(), footer.end());
     }
 };
