@@ -3,7 +3,7 @@
 
 #include "BaseDescriptor.h"
 
-template <class DataFacadeT> class PlainDescriptor final : public BaseDescriptor<DataFacadeT>
+template <class DataFacadeT> class PLAINDescriptor final : public BaseDescriptor<DataFacadeT>
 {
   private:
     DescriptorConfig config;
@@ -30,7 +30,7 @@ template <class DataFacadeT> class PlainDescriptor final : public BaseDescriptor
     }
 
   public:
-    explicit PlainDescriptor(DataFacadeT *facade) : facade(facade) {}
+    explicit PLAINDescriptor(DataFacadeT *facade) : facade(facade) {}
 
     void SetConfig(const DescriptorConfig &c) final { config = c; }
 

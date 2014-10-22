@@ -47,7 +47,6 @@ template <class DataFacadeT> class GPXDescriptor final : public BaseDescriptor<D
 
         FixedPointCoordinate::convertInternalLatLonToString(coordinate.lat, tmp);
         output.insert(output.end(), route_point_head.begin(), route_point_head.end());
-        output.insert(output.end(), tmp.begin(), tmp.end());
         output.push_back('\"');
 
         FixedPointCoordinate::convertInternalLatLonToString(coordinate.lon, tmp);

@@ -159,7 +159,7 @@ template <class DataFacadeT> class ViaRoutePlugin final : public BasePlugin
                 descriptor = std::make_shared<GPXDescriptor<DataFacadeT>>(facade);
                 break;
             case 2:
-                descriptor = std::make_shared<PlainDescriptor<DataFacadeT>>(facade);
+                descriptor = std::make_shared<PLAINDescriptor<DataFacadeT>>(facade);
                 break;
         // case 2:
         //      descriptor = std::make_shared<GEOJSONDescriptor<DataFacadeT>>();
