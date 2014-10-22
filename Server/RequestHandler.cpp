@@ -114,7 +114,12 @@ void RequestHandler::handle_request(const http::Request &req, http::Reply &reply
 
         // set headers
         reply.headers.emplace_back("Content-Length", cast::integral_to_string(reply.content.size()));
-        if ("plain" == route_parameters.output_format)
+        if ("kml" == route_parameters.output_format)
+        { // plain json file
+            reply.headers.emplace_back("Content-Type", "application/json; charset=UTF-8");
+            reply.headers.emplace_back("Content-Disposition", "inline; filename=\"kml.json\"");
+        }
+        else if ("plain" == route_parameters.output_format)
         { // plain json file
             reply.headers.emplace_back("Content-Type", "application/json; charset=UTF-8");
             reply.headers.emplace_back("Content-Disposition", "inline; filename=\"route.json\"");

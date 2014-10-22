@@ -37,6 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "../Descriptors/GPXDescriptor.h"
 #include "../Descriptors/JSONDescriptor.h"
 #include "../Descriptors/PlainDescriptor.h"
+#include "../Descriptors/KMLDescriptor.h"
 #include "../Util/make_unique.hpp"
 #include "../Util/simple_logger.hpp"
 #include "../Util/StringUtil.h"
@@ -64,6 +65,7 @@ template <class DataFacadeT> class ViaRoutePlugin final : public BasePlugin
         descriptor_table.emplace("json", 0);
         descriptor_table.emplace("gpx", 1);
         descriptor_table.emplace("plain", 2);
+        descriptor_table.emplace("kml", 3);
         // descriptor_table.emplace("geojson", 2);
     }
 
@@ -160,6 +162,9 @@ template <class DataFacadeT> class ViaRoutePlugin final : public BasePlugin
                 break;
             case 2:
                 descriptor = std::make_shared<PLAINDescriptor<DataFacadeT>>(facade);
+                break;
+            case 3:
+                descriptor = std::make_shared<KMLDescriptor<DataFacadeT>>(facade);
                 break;
         // case 2:
         //      descriptor = std::make_shared<GEOJSONDescriptor<DataFacadeT>>();
