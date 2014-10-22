@@ -12,7 +12,7 @@ private:
 
     void AddRoutePoint(const FixedPointCoordinate &coordinate, std::vector<char> &output)
     {
-        const std::string route_point_head = "{ \"lat\":";
+        const std::string route_point_head = "{\"lat\":";
         const std::string route_point_middle = ",\"lng\":";
         const std::string route_point_tail = "},";
 
@@ -21,7 +21,7 @@ private:
         FixedPointCoordinate::convertInternalLatLonToString(coordinate.lat, tmp);
         output.insert(output.end(), route_point_head.begin(), route_point_head.end());
         output.insert(output.end(), tmp.begin(), tmp.end());
-        output.push_back('\"');
+//        output.push_back('\"');
 
         FixedPointCoordinate::convertInternalLatLonToString(coordinate.lon, tmp);
         output.insert(output.end(), route_point_middle.begin(), route_point_middle.end());
